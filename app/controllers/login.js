@@ -11,6 +11,7 @@ module.exports = (app)=>{
 							if(req.user){
 								res.redirect('/tranquilo')
 							}else{
+								
 								res.render('index',{
 									quest: result.anunciado
 								});
@@ -34,7 +35,7 @@ module.exports = (app)=>{
 		
 		loginError: function(req,res){
 			req.flash('info', 1);
-			res.redirect('/')
+			res.redirect('/ui')
 		},
 		logar: function(req,res){
 			res.redirect('/tranquilo');
