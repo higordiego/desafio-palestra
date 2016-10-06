@@ -1,7 +1,6 @@
 module.exports = function(app){
 	var mongoose = require('mongoose')
 	,	Schema = mongoose.Schema
-	,	ObjectId = mongoose.Schema.Types.ObjectId
 	,	pass = require('../middleware/password');
 
 	function configPass (v) {

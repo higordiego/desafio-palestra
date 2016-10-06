@@ -1,7 +1,9 @@
 module.exports = (app)=>{
-	let questoes = app.controllers.questoes;
+	let questoes = app.controllers.questoes
+	,   autenticar 	= require('../middleware/autenticador');
 	app.get('/questoes', questoes.listar);
 	app.post('/questoes', questoes.cadastrar);
+	app.get('/tranquilo', autenticar.loginSistema, questoes.index);
 }
 
 // 41gu3mt44qu1

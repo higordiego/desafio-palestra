@@ -15,6 +15,12 @@ module.exports = (app)=>{
 			Questao.find((err,questao)=>{
 				res.json(questao);
 			})
+		},
+		index: (req,res)=>{
+			req.logout();
+			res.render('painel');
+
+
 		}
 	}
 	

@@ -9,7 +9,7 @@ module.exports = (app)=>{
 					(err, result)=> {
 						if(result){
 							if(req.user){
-								res.redirect('/painel/')
+								res.redirect('/tranquilo')
 							}else{
 								res.render('index',{
 									quest: result.anunciado
@@ -17,7 +17,7 @@ module.exports = (app)=>{
 							}
 						}else{
 							if(req.user){
-								res.redirect('/painel/')
+								res.redirect('/')
 							}else{
 								res.render('index',{
 									quest: ''
@@ -37,7 +37,7 @@ module.exports = (app)=>{
 			res.redirect('/')
 		},
 		logar: function(req,res){
-			res.render('painel');
+			res.redirect('/tranquilo');
 		},
 		logout: function(req,res){
 			req.logout();
