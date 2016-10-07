@@ -19,8 +19,6 @@ module.exports = (app)=>{
 		index: (req,res)=>{
 			req.logout();
 			res.render('painel');
-
-
 		}
 	}
 	

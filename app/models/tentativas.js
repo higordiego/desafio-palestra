@@ -7,7 +7,7 @@ module.exports = (app)=>{
 	var tentativas = new Schema(
 		{
 			
-			codigo: 		{ type: ObjectId, ref:"Usuario"},
+			codigo: 		{ type: ObjectId, ref:"Codigo"},
 			
 			tentou: 		{ type: Number, required: true }
 			
