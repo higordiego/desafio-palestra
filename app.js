@@ -7,16 +7,32 @@ const  express          = require('express')
 ,      compression      = require('compression')
 ,      expressSession   = require('express-session')
 ,      passport         = require('passport')
+,      helmet           = require('helmet')
 ,      cors             = require('cors')
 ,      passportHttp     = require('passport-http')
 ,      passportLocal    = require('passport-local')
 ,      flash            = require('express-flash')
 ,      load             = require('express-load')
+,      minify           = require('express-minify')
+,      minifyHTML       = require('express-minify-html')
 ,      app              = express();
 
 
-
 // view engine setup
+app.use(helmet());
+app.use(compression());
+app.use(minify());
+app.use(minifyHTML({
+    override:      true,
+    htmlMinifier: {
+        removeComments:            false,
+        collapseWhitespace:        true,
+        collapseBooleanAttributes: true,
+        removeAttributeQuotes:     true,
+        removeEmptyAttributes:     true,
+        minifyJS:                  true
+    }
+}));
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -26,11 +42,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
-// app.use(helmet());
+
 app.use(flash());
 app.disable('x-powered-by');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(compression());
+
 app.use(cookieParser('iY}ONxQ,Y9I^Z}&y6-i}~35cS/vk/sf8+y@8c.2></>P*Z03Xhue?lzY%|dzN>S'));
 app.use(expressSession({
   secret: process.env.SESSION_SECRET || '1a5H(qzO&1+!8M35tXvai3A*JF%Os]eOoG63/Oo+:1S(R[%x[js09UKDam0#85',
@@ -112,12 +128,12 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.redirect('/');
-  // res.status(err.status || 500);
-  // res.render('error', {
-  //   message: err.message,
-  //   error: {}
-  // });
+  // res.redirect('/');
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
 

@@ -7,7 +7,7 @@ module.exports = (app)=>{
 			if(codigo == req.body.codigo){
 				Codigo.findOne({nome: req.body.nome}, (err,codigos)=>{
 					if(!codigos){
-						app.locals.nome = req.body.nome;
+						
 						let codigo 		= new Codigo;
 						codigo.nome 	= req.body.nome;
 						codigo.codigo 	= req.body.codigo;
