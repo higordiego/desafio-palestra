@@ -19,20 +19,20 @@ const  express          = require('express')
 
 
 // view engine setup
-app.use(helmet());
+//app.use(helmet());
 app.use(compression());
-app.use(minify());
-app.use(minifyHTML({
-    override:      true,
-    htmlMinifier: {
-        removeComments:            false,
-        collapseWhitespace:        true,
-        collapseBooleanAttributes: true,
-        removeAttributeQuotes:     true,
-        removeEmptyAttributes:     true,
-        minifyJS:                  true
-    }
-}));
+// app.use(minify());
+// app.use(minifyHTML({
+//     override:      true,
+//     htmlMinifier: {
+//         removeComments:            false,
+//         collapseWhitespace:        true,
+//         collapseBooleanAttributes: true,
+//         removeAttributeQuotes:     true,
+//         removeEmptyAttributes:     true,
+//         //minifyJS:                  true
+//     }
+// }));
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
 // app.use(favicon(path.join(__dirname, 'public', 'rapadura.png')));
